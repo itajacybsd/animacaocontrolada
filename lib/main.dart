@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage>
   }
 
   void listener() {
+    // se não tiver esse setState ele não atualiza
     setState(() {});
     // print('Value: ${_animationController.value}');
   }
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage>
               ),
               ElevatedButton(
                 onPressed: () {
-                  _animationController.repeat();
+                  _animationController.repeat(reverse: true);
                 },
                 child: Text('Repeat'),
               ),
