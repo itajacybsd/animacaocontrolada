@@ -82,9 +82,34 @@ class _HomePageState extends State<HomePage>
             ],
           ),
           const SizedBox(height: 20),
-          Text(
-            'Value: ${_animationController.value.toStringAsFixed(1)}',
-            style: TextStyle(fontSize: 24),
+          Container(
+            height: 50,
+            width: 300,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.2),
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Text(
+                  'ENTRAR',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                CircularProgressIndicator(color: Colors.white),
+              ],
+            ),
           ),
         ],
       ),
