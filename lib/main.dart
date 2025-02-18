@@ -26,6 +26,10 @@ class _HomePageState extends State<HomePage>
 
   late final Animation<double> _radiusAnimation;
 
+  late final Animation<double> _textOpacityAnimation;
+
+  late final Animation<double> _loadingOpacityAnimation;
+
   // O controller depende de ações externas
   // e as açoes externas se assemelham a um player de audio/video
 
@@ -46,6 +50,16 @@ class _HomePageState extends State<HomePage>
     _radiusAnimation = Tween<double>(
       begin: 10,
       end: 25,
+    ).animate(_animationController);
+
+    _textOpacityAnimation = Tween<double>(
+      begin: 1, //totalmente visível
+      end: 0, // fica invisível
+    ).animate(_animationController);
+
+    _loadingOpacityAnimation = Tween<double>(
+      begin: 0, //começa invisível
+      end: 1, //totalmente visível
     ).animate(_animationController);
   }
 
@@ -113,15 +127,21 @@ class _HomePageState extends State<HomePage>
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Text(
-                  'ENTRAR',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                Opacity(
+                  opacity: _textOpacityAnimation.value,
+                  child: Text(
+                    'ENTRAR',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                CircularProgressIndicator(color: Colors.white),
+                Opacity(
+                  opacity: _loadingOpacityAnimation.value,
+                  child: CircularProgressIndicator(color: Colors.white),
+                ),
               ],
             ),
           ),
