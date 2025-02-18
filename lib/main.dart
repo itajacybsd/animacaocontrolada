@@ -128,6 +128,7 @@ class _HomePageState extends State<HomePage>
               alignment: Alignment.center,
               children: [
                 Opacity(
+                  //adicionando opacidade ao texto
                   opacity: _textOpacityAnimation.value,
                   child: Text(
                     'ENTRAR',
@@ -139,6 +140,7 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
                 Opacity(
+                  //adicionando opacidade ao loading
                   opacity: _loadingOpacityAnimation.value,
                   child: CircularProgressIndicator(color: Colors.white),
                 ),
