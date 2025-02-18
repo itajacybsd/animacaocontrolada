@@ -42,10 +42,17 @@ class _HomePageState extends State<HomePage>
     );
     _animationController.addListener(listener);
 
-    _widthAnimation = Tween<double>(
-      begin: 300,
-      end: 50,
-    ).animate(_animationController);
+    // _widthAnimation = Tween<double>(
+    //   begin: 300,
+    //   end: 50,
+    // ).animate(_animationController);
+    _widthAnimation = Tween<double>(begin: 300, end: 50).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.bounceOut,
+        reverseCurve: Curves.easeIn,
+      ),
+    );
 
     _radiusAnimation = Tween<double>(
       begin: 10,
