@@ -26,9 +26,21 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
       vsync: this,
     );
+
+    _animationController.addListener(listener);
+  }
+
+  void listener() {
+    print('Value: ${_animationController.value}');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.removeListener(listener);
   }
 
   @override
