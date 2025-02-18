@@ -22,6 +22,8 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 
+  late final Animation<double> _widthAnimation;
+
   // O controller depende de ações externas
   // e as açoes externas se assemelham a um player de audio/video
 
@@ -33,6 +35,11 @@ class _HomePageState extends State<HomePage>
       vsync: this,
     );
     _animationController.addListener(listener);
+
+    _widthAnimation = Tween<double>(
+      begin: 300,
+      end: 50,
+    ).animate(_animationController);
   }
 
   void listener() {
@@ -84,7 +91,7 @@ class _HomePageState extends State<HomePage>
           const SizedBox(height: 20),
           Container(
             height: 50,
-            width: 300,
+            width: _widthAnimation.value,
             decoration: BoxDecoration(
               color: Colors.blue,
               borderRadius: BorderRadius.circular(10),
