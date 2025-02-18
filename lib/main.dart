@@ -36,7 +36,8 @@ class _HomePageState extends State<HomePage>
   }
 
   void listener() {
-    print('Value: ${_animationController.value}');
+    setState(() {});
+    // print('Value: ${_animationController.value}');
   }
 
   @override
@@ -49,31 +50,40 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Animation Controller')),
-      body: Row(
+      body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              _animationController.forward();
-            },
-            child: Text('Forward'),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.forward();
+                },
+                child: Text('Forward'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.reverse();
+                },
+                child: Text('Reverse'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.stop();
+                },
+                child: Text('Stop'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.repeat();
+                },
+                child: Text('Repeat'),
+              ),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              _animationController.reverse();
-            },
-            child: Text('Reverse'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _animationController.stop();
-            },
-            child: Text('Stop'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _animationController.repeat();
-            },
-            child: Text('Repeat'),
+          const SizedBox(height: 20),
+          Text(
+            'Value: ${_animationController.value.toStringAsFixed(1)}',
+            style: TextStyle(fontSize: 24),
           ),
         ],
       ),
