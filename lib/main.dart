@@ -49,17 +49,25 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Animation Controller')),
-      body: Column(
+      body: Row(
         children: [
           ElevatedButton(
             onPressed: () {
-              if (_animationController.isAnimating) {
-                _animationController.stop();
-              } else {
-                _animationController.repeat();
-              }
+              _animationController.forward();
             },
-            child: Text('Animate'),
+            child: Text('Forward'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _animationController.stop();
+            },
+            child: Text('Stop'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _animationController.repeat();
+            },
+            child: Text('Repeat'),
           ),
         ],
       ),
