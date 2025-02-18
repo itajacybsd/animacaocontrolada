@@ -62,12 +62,16 @@ class _HomePageState extends State<HomePage>
     _textOpacityAnimation = Tween<double>(
       begin: 1, //totalmente visível
       end: 0, // fica invisível
-    ).animate(_animationController);
+    ).animate(
+      CurvedAnimation(parent: _animationController, curve: Interval(0, 0.4)),
+    );
 
     _loadingOpacityAnimation = Tween<double>(
       begin: 0, //começa invisível
       end: 1, //totalmente visível
-    ).animate(_animationController);
+    ).animate(
+      CurvedAnimation(parent: _animationController, curve: Interval(0.6, 1)),
+    );
   }
 
   void listener() {
