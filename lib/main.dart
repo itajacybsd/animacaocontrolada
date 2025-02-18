@@ -20,8 +20,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+
   // O controller depende de ações externas
   // e as açoes externas se assemelham a um player de audio/video
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +69,7 @@ class _HomePageState extends State<HomePage>
             ],
           ),
           const SizedBox(height: 20),
-          AnimatedButton(),
+          AnimatedButton(controller: _animationController),
         ],
       ),
     );
@@ -66,7 +77,8 @@ class _HomePageState extends State<HomePage>
 }
 
 class AnimatedButton extends StatefulWidget {
-  const AnimatedButton({super.key});
+  final AnimationController controller;
+  const AnimatedButton({super.key, required this.controller});
 
   @override
   State<AnimatedButton> createState() => _AnimatedButtonState();
@@ -83,10 +95,11 @@ class _AnimatedButtonState extends State<AnimatedButton>
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      duration: Duration(seconds: 2),
-      vsync: this,
-    );
+    _animationController = widget.controller;
+    // _animationController = AnimationController(
+    //   duration: Duration(seconds: 2),
+    //   vsync: this,
+    // );
     _animationController.addListener(listener);
 
     // _widthAnimation = Tween<double>(
