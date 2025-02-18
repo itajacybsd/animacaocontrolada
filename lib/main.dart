@@ -20,18 +20,65 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _animationController;
-
-  late final Animation<double> _widthAnimation; //largura do botão
-
-  late final Animation<double> _radiusAnimation;
-
-  late final Animation<double> _textOpacityAnimation;
-
-  late final Animation<double> _loadingOpacityAnimation;
-
   // O controller depende de ações externas
   // e as açoes externas se assemelham a um player de audio/video
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Animation Controller')),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.forward();
+                },
+                child: Text('Forward'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.reverse();
+                },
+                child: Text('Reverse'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.stop();
+                },
+                child: Text('Stop'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _animationController.repeat(reverse: true);
+                },
+                child: Text('Repeat'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          AnimatedButton(),
+        ],
+      ),
+    );
+  }
+}
+
+class AnimatedButton extends StatefulWidget {
+  const AnimatedButton({super.key});
+
+  @override
+  State<AnimatedButton> createState() => _AnimatedButtonState();
+}
+
+class _AnimatedButtonState extends State<AnimatedButton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<double> _widthAnimation; //largura do botão
+  late final Animation<double> _radiusAnimation;
+  late final Animation<double> _textOpacityAnimation;
+  late final Animation<double> _loadingOpacityAnimation;
 
   @override
   void initState() {
@@ -88,75 +135,39 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Animation Controller')),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  _animationController.forward();
-                },
-                child: Text('Forward'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  _animationController.reverse();
-                },
-                child: Text('Reverse'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  _animationController.stop();
-                },
-                child: Text('Stop'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  _animationController.repeat(reverse: true);
-                },
-                child: Text('Repeat'),
-              ),
-            ],
+    return Container(
+      height: 50,
+      width: _widthAnimation.value,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(_radiusAnimation.value),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.2),
+            blurRadius: 10,
+            spreadRadius: 2,
           ),
-          const SizedBox(height: 20),
-          Container(
-            height: 50,
-            width: _widthAnimation.value,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(_radiusAnimation.value),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.2),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                ),
-              ],
+        ],
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Opacity(
+            //adicionando opacidade ao texto
+            opacity: _textOpacityAnimation.value,
+            child: Text(
+              'ENTRAR',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Opacity(
-                  //adicionando opacidade ao texto
-                  opacity: _textOpacityAnimation.value,
-                  child: Text(
-                    'ENTRAR',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Opacity(
-                  //adicionando opacidade ao loading
-                  opacity: _loadingOpacityAnimation.value,
-                  child: CircularProgressIndicator(color: Colors.white),
-                ),
-              ],
-            ),
+          ),
+          Opacity(
+            //adicionando opacidade ao loading
+            opacity: _loadingOpacityAnimation.value,
+            child: CircularProgressIndicator(color: Colors.white),
           ),
         ],
       ),
