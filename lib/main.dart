@@ -22,7 +22,9 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 
-  late final Animation<double> _widthAnimation;
+  late final Animation<double> _widthAnimation; //largura do botão
+
+  late final Animation<double> _radiusAnimation;
 
   // O controller depende de ações externas
   // e as açoes externas se assemelham a um player de audio/video
@@ -39,6 +41,11 @@ class _HomePageState extends State<HomePage>
     _widthAnimation = Tween<double>(
       begin: 300,
       end: 50,
+    ).animate(_animationController);
+
+    _radiusAnimation = Tween<double>(
+      begin: 10,
+      end: 25,
     ).animate(_animationController);
   }
 
@@ -94,7 +101,7 @@ class _HomePageState extends State<HomePage>
             width: _widthAnimation.value,
             decoration: BoxDecoration(
               color: Colors.blue,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(_radiusAnimation.value),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.2),
