@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+  //!  PRIMEIRA FORMA, COM O CONTROLLER EXTERNO
   late final AnimationController _animationController;
 
   // O controller depende de ações externas
