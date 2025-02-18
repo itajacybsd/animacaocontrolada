@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //!  SEGUNDA FORMA, COM O CONTROLLER EXTERNO
+  //!  SEGUNDA FORMA, IMPLICITA
 
   var _status = AnimatedButtonStatus.normal;
 
