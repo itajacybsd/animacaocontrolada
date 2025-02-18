@@ -1,0 +1,119 @@
+[33mcommit 89c0cb09c285380c4a7cac1f7ac658689ec1a5da[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 15:36:06 2025 -0300
+
+    Segunda forma - implicita
+
+[33mcommit 599170dfc21e9f1feb07887cc7b635359f48da95[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 15:23:47 2025 -0300
+
+    Segunda forma - implicita
+
+[33mcommit edbf66fb78c9762385302bb8dbd483eb28ca9531[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 13:38:47 2025 -0300
+
+    Primeira forma - com o controller externo
+
+[33mcommit bc00751cc9e357a16c53be65725f26b45acb9b5c[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 13:37:17 2025 -0300
+
+    passando o controller para o AnimatedButton
+
+[33mcommit 70d9e22bce7d14ceac7d8a2936be4eca2f628dc6[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 13:26:12 2025 -0300
+
+    widget AnimatedButton, criado, mas inada não funciona
+
+[33mcommit 659996aa6f0dbad3a0ba08b18c57c7860088d392[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 13:09:25 2025 -0300
+
+    usando Interval para definir o intervalo de cada animacao, some com o texto e aparece o loading e vice-versa
+
+[33mcommit 2b6b48a0244d9f2ea4bee1486e26dc709cbced64[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 12:48:33 2025 -0300
+
+    utilizacao do CurvedAnimation, para controle de curvas na animacao
+
+[33mcommit 24af4777c2f2551b0f2c0dda4109bed1b04a9612[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 12:40:57 2025 -0300
+
+    primeira parte finalizada e funcionando
+
+[33mcommit 7dc61410df7ce2b2442e94bf7035eaf914c95f0c[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 12:38:59 2025 -0300
+
+    _textOpacityAnimation, _loadingOpacityAnimation   tornando visivel/invisivel o texto  e o loading
+
+[33mcommit 54f13f6aad76dd99ad0b50d51c6da2781fa1020c[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 12:29:07 2025 -0300
+
+    botão virando bolinha, _radiusAnimation
+
+[33mcommit b875a3b54de79416bbc219bb3a512141b19152a3[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 12:24:02 2025 -0300
+
+    _widthAnimation
+
+[33mcommit 56683a26a77b1098f3c43cf54c313c36fc545997[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 11:53:12 2025 -0300
+
+    botao entrar com circularProgressIndicator
+
+[33mcommit c9b87eeeabb2be0a3101246b1d04bf0b371b56f4[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 10:46:04 2025 -0300
+
+    repeat com reverse, 0 a 1, de 1 a 0
+
+[33mcommit e072bf30b02685e24ed45f3267a4102a80d9e06a[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 10:42:06 2025 -0300
+
+    valores na tela
+
+[33mcommit c8f99df766b7bf7e0cacd30eb2dc4570b70ed6e2[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 10:34:45 2025 -0300
+
+    forward, reverse, stop, repeat
+
+[33mcommit a21b9c521b35854597b6858a0e736a079fce9ce8[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 10:32:29 2025 -0300
+
+    forward, stop, repeat
+
+[33mcommit 9a0578a35db3cbf7855e4e37ae4118541ae81d35[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 10:03:33 2025 -0300
+
+    scaffold com stop e repeat
+
+[33mcommit a8b1bd9c7e3425b5261b7d0fb989c5a116ce4858[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 09:56:26 2025 -0300
+
+    listener criado
+
+[33mcommit a384f673fb1134f8dae4b0723971dce02962d3bb[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 09:52:12 2025 -0300
+
+    uso do TickerProvider
+
+[33mcommit c1c1d2347206653ee0f032d9a15a878fe8c42e15[m
+Author: itajacy TI02 <itajacy@bsd.com.br>
+Date:   Tue Feb 18 09:46:46 2025 -0300
+
+    primeiro commit
