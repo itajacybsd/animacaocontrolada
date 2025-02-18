@@ -59,6 +59,12 @@ class _HomePageState extends State<HomePage>
           ),
           ElevatedButton(
             onPressed: () {
+              _animationController.reverse();
+            },
+            child: Text('Reverse'),
+          ),
+          ElevatedButton(
+            onPressed: () {
               _animationController.stop();
             },
             child: Text('Stop'),
