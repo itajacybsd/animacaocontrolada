@@ -22,6 +22,9 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 
+  // O controller depende de ações externas
+  // e as açoes externas se assemelham a um player de audio/video
+
   @override
   void initState() {
     super.initState();
@@ -29,7 +32,6 @@ class _HomePageState extends State<HomePage>
       duration: Duration(seconds: 2),
       vsync: this,
     );
-
     _animationController.addListener(listener);
   }
 
@@ -45,6 +47,22 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text('Animation Controller')),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              if (_animationController.isAnimating) {
+                _animationController.stop();
+              } else {
+                _animationController.repeat();
+              }
+            },
+            child: Text('Animate'),
+          ),
+        ],
+      ),
+    );
   }
 }
