@@ -18,22 +18,13 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  //!  PRIMEIRA FORMA, COM O CONTROLLER EXTERNO
-  late final AnimationController _animationController;
+class _HomePageState extends State<HomePage> {
+  //!  SEGUNDA FORMA, COM O CONTROLLER EXTERNO
+
+  var _status = AnimatedButtonStatus.normal;
 
   // O controller depende de ações externas
   // e as açoes externas se assemelham a um player de audio/video
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      duration: Duration(seconds: 2),
-      vsync: this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,45 +36,53 @@ class _HomePageState extends State<HomePage>
             children: [
               ElevatedButton(
                 onPressed: () {
-                  _animationController.forward();
+                  setState(() {
+                    _status = AnimatedButtonStatus.normal;
+                  });
                 },
-                child: Text('Forward'),
+                child: Text('Normal'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  _animationController.reverse();
+                  setState(() {
+                    _status = AnimatedButtonStatus.loading;
+                  });
                 },
-                child: Text('Reverse'),
+                child: Text('Loading'),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  _animationController.stop();
-                },
-                child: Text('Stop'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  _animationController.repeat(reverse: true);
-                },
-                child: Text('Repeat'),
-              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     _animationController.stop();
+              //   },
+              //   child: Text('Stop'),
+              // ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     _animationController.repeat(reverse: true);
+              //   },
+              //   child: Text('Repeat'),
+              // ),
             ],
           ),
           const SizedBox(height: 20),
-          AnimatedButton(controller: _animationController),
+          AnimatedButton(status: _status),
         ],
       ),
     );
   }
 }
 
+enum AnimatedButtonStatus { normal, loading }
+
 class AnimatedButton extends StatefulWidget {
-  final AnimationController controller;
-  const AnimatedButton({super.key, required this.controller});
+  final AnimatedButtonStatus status;
+  const AnimatedButton({super.key, required this.status});
 
   @override
   State<AnimatedButton> createState() => _AnimatedButtonState();
 }
+
+//! precisaremos de algo que informe as alteraçãoes
 
 class _AnimatedButtonState extends State<AnimatedButton>
     with SingleTickerProviderStateMixin {
@@ -96,11 +95,11 @@ class _AnimatedButtonState extends State<AnimatedButton>
   @override
   void initState() {
     super.initState();
-    _animationController = widget.controller;
-    // _animationController = AnimationController(
-    //   duration: Duration(seconds: 2),
-    //   vsync: this,
-    // );
+    // _animationController = widget.controller;
+    _animationController = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
     _animationController.addListener(listener);
 
     // _widthAnimation = Tween<double>(
@@ -133,12 +132,31 @@ class _AnimatedButtonState extends State<AnimatedButton>
     ).animate(
       CurvedAnimation(parent: _animationController, curve: Interval(0.6, 1)),
     );
+
+    if (widget.status == AnimatedButtonStatus.loading) {
+      _animationController.value = 1.0;
+    } else {
+      _animationController.value = 0.0;
+    }
   }
 
   void listener() {
     // se não tiver esse setState ele não atualiza
     setState(() {});
     // print('Value: ${_animationController.value}');
+  }
+
+  @override
+  //! Escuta as atualizações de estado no widget
+  //! verifica se houve alguma alteração no widget.status
+  void didUpdateWidget(covariant AnimatedButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.status == AnimatedButtonStatus.loading) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
   }
 
   @override
